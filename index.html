@@ -275,7 +275,7 @@
       </div>
     </section>
 
-    <!-- ── CTA Banner ── -->
+    <!-- ── CTA Banner + Contact Form ── -->
     <section class="cta-banner" aria-labelledby="cta-heading">
       <div class="cta-banner__inner container">
         <div class="cta-banner__content">
@@ -287,11 +287,58 @@
             <li>✓ Serving All California Veterans</li>
             <li>✓ Compassionate & Thorough</li>
           </ul>
+          <div class="cta-banner__phone">
+            <a href="tel:+13105718904" class="btn btn--accent btn--lg">Call 310-571-8904</a>
+          </div>
         </div>
-        <div class="cta-banner__actions">
-          <a href="tel:+13105718904" class="btn btn--accent btn--lg">Call 310-571-8904</a>
-          <a href="mailto:info@dbqhelp.com" class="btn btn--outline-light btn--lg">Email Us</a>
-          <a href="contact.html" class="btn btn--outline-light btn--lg">Contact Form</a>
+        <div class="cta-banner__form">
+          <h3>Send Us a Message</h3>
+          <form id="contact-form" class="contact-form" novalidate>
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="_subject" value="New Contact — DBQ Help (Mockup D)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cf-first">First Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="cf-first" name="firstName" required autocomplete="given-name">
+              </div>
+              <div class="form-group">
+                <label for="cf-last">Last Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="cf-last" name="lastName" required autocomplete="family-name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cf-email">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="cf-email" name="email" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="cf-phone">Phone</label>
+              <input type="tel" id="cf-phone" name="phone" autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="cf-service">Service Needed <span aria-hidden="true">*</span></label>
+              <select id="cf-service" name="service" required>
+                <option value="">Select a service</option>
+                <option value="DBQ Evaluation">DBQ Evaluation</option>
+                <option value="Nexus Letter">Nexus Letter</option>
+                <option value="DBQ + Nexus Letter">DBQ + Nexus Letter</option>
+                <option value="Other">Other / Not Sure</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" name="message" rows="4" placeholder="Briefly describe your situation (optional)"></textarea>
+            </div>
+            <div class="form-group form-group--checkbox">
+              <input type="checkbox" id="cf-consent" name="consent" required>
+              <label for="cf-consent">I understand this form does not establish a doctor-patient relationship. <span aria-hidden="true">*</span></label>
+            </div>
+            <button type="submit" class="btn btn--accent btn--lg form-submit-btn">Send Message</button>
+          </form>
+          <div id="form-success" class="form-success" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out. We'll get back to you within one business day.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -327,5 +374,74 @@
   </footer>
 
   <script src="dbq-app.js"></script>
+  <script>
+  (function () {
+    var form = document.getElementById('contact-form');
+    var success = document.getElementById('form-success');
+    if (!form || !success) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Basic validation
+      var errs = [];
+      var firstName = form.firstName.value.trim();
+      var lastName = form.lastName.value.trim();
+      var email = form.email.value.trim();
+      var service = form.service.value;
+      var consent = form.consent.checked;
+
+      if (!firstName) errs.push('firstName');
+      if (!lastName) errs.push('lastName');
+      if (!email || !email.includes('@')) errs.push('email');
+      if (!service) errs.push('service');
+      if (!consent) errs.push('consent');
+
+      // Clear previous error styling
+      form.querySelectorAll('.form-error').forEach(function (el) { el.classList.remove('form-error'); });
+
+      if (errs.length) {
+        errs.forEach(function (name) {
+          var el = form.querySelector('[name="' + name + '"]');
+          if (el) el.classList.add('form-error');
+        });
+        return;
+      }
+
+      var btn = form.querySelector('.form-submit-btn');
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+      var fd = new FormData();
+      fd.append('_subject', 'New Contact Form Submission — DBQ Help');
+      fd.append('_cc', 'kay@dbqhelp.com');
+      fd.append('First Name', firstName);
+      fd.append('Last Name', lastName);
+      fd.append('Email', email);
+      fd.append('Phone', form.phone.value.trim() || 'Not provided');
+      fd.append('Service Needed', service);
+      fd.append('Message', form.message.value.trim() || 'No message');
+
+      fetch('https://formsubmit.co/ajax/info@dbqhelp.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: fd
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (res.success) {
+          form.style.display = 'none';
+          success.hidden = false;
+        } else {
+          alert('Something went wrong. Please call us at 310-571-8904.');
+          if (btn) { btn.disabled = false; btn.textContent = 'Send Message'; }
+        }
+      })
+      .catch(function () {
+        alert('Could not send message. Please call us at 310-571-8904.');
+        if (btn) { btn.disabled = false; btn.textContent = 'Send Message'; }
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
