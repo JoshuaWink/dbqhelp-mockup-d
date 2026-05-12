@@ -23,6 +23,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="cup-bundle.css" rel="stylesheet">
   <link href="cup.css" rel="stylesheet">
+  <!-- Theme: swap this one link to change the entire color scheme -->
+  <link href="themes/navy-gold.css" rel="stylesheet" id="theme-css">
   <link href="dbq-d.css" rel="stylesheet">
   <script src="cup.js" type="module"></script>
 </head>
@@ -373,6 +375,14 @@
     </div>
   </footer>
 
+  <!-- ── Theme Switcher (demo only) ── -->
+  <div class="theme-switcher" aria-label="Theme selector">
+    <span class="theme-switcher__label">Theme:</span>
+    <button class="theme-switcher__btn active" data-theme="themes/navy-gold.css">Navy &amp; Gold</button>
+    <button class="theme-switcher__btn" data-theme="themes/slate-teal.css">Slate &amp; Teal</button>
+    <button class="theme-switcher__btn" data-theme="themes/charcoal-copper.css">Charcoal &amp; Copper</button>
+  </div>
+
   <script src="dbq-app.js"></script>
   <script>
   (function () {
@@ -439,6 +449,20 @@
       .catch(function () {
         alert('Could not send message. Please call us at 310-571-8904.');
         if (btn) { btn.disabled = false; btn.textContent = 'Send Message'; }
+      });
+    });
+  })();
+  </script>
+  <script>
+  /* Theme switcher */
+  (function () {
+    var link = document.getElementById('theme-css');
+    var btns = document.querySelectorAll('.theme-switcher__btn');
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        btns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        link.setAttribute('href', btn.dataset.theme);
       });
     });
   })();

@@ -1,0 +1,48 @@
+/* ═══════════════════════════════════════════
+   Theme: Slate & Teal — modern professional
+   ═══════════════════════════════════════════ */
+:root {
+  /* ── Surface ── */
+  --t-bg:             #ffffff;
+  --t-bg-alt:         #f0f4f5;
+  --t-surface:        #ffffff;
+  --t-surface-hover:  #f7fafa;
+  --t-surface-border: #dce4e6;
+
+  /* ── Dark surfaces (hero, dark sections, footer) ── */
+  --t-dark:           #1e2a35;
+  --t-dark-mid:       #263545;
+  --t-dark-light:     #334555;
+  --t-dark-accent:    #192430;
+  --t-dark-border:    rgba(255,255,255,0.1);
+  --t-dark-glass:     rgba(255,255,255,0.04);
+
+  /* ── Accent ── */
+  --t-accent:         #0d9488;
+  --t-accent-hover:   #14b8a6;
+  --t-accent-bg:      rgba(13,148,136,0.12);
+  --t-accent-glow:    rgba(13,148,136,0.3);
+  --t-accent-on:      #ffffff;
+
+  /* ── Text ── */
+  --t-text:           #1e293b;
+  --t-text-muted:     #64748b;
+  --t-text-on-dark:   #ffffff;
+  --t-text-on-dark-muted: #cbd5e1;
+
+  /* ── Functional ── */
+  --t-error:          #dc2626;
+  --t-success:        #16a34a;
+
+  /* ── Shape ── */
+  --t-radius:         10px;
+  --t-shadow:         0 4px 16px rgba(0,0,0,0.06);
+  --t-shadow-lg:      0 12px 40px rgba(0,0,0,0.10);
+  --t-transition:     0.2s ease;
+  --t-font:           'Inter', system-ui, sans-serif;
+
+  /* ── Hero overlay pattern ── */
+  --t-hero-pattern: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><circle cx="650" cy="150" r="350" fill="rgba(13,148,136,0.05)"/><circle cx="150" cy="450" r="250" fill="rgba(13,148,136,0.03)"/></svg>');
+  --t-stats-bg:       rgba(0,0,0,0.4);
+  --t-stats-border:   rgba(13,148,136,0.25);
+}

@@ -1,0 +1,48 @@
+/* ═══════════════════════════════════════════
+   Theme: Navy & Gold — WHG-inspired authority
+   ═══════════════════════════════════════════ */
+:root {
+  /* ── Surface ── */
+  --t-bg:             #ffffff;
+  --t-bg-alt:         #f4f5f7;
+  --t-surface:        #ffffff;
+  --t-surface-hover:  #fafbfc;
+  --t-surface-border: #e8eaed;
+
+  /* ── Dark surfaces (hero, dark sections, footer) ── */
+  --t-dark:           #0b1d33;
+  --t-dark-mid:       #122744;
+  --t-dark-light:     #1a3558;
+  --t-dark-accent:    #101e30;
+  --t-dark-border:    rgba(255,255,255,0.1);
+  --t-dark-glass:     rgba(255,255,255,0.04);
+
+  /* ── Accent ── */
+  --t-accent:         #c9a227;
+  --t-accent-hover:   #e6c956;
+  --t-accent-bg:      rgba(201,162,39,0.15);
+  --t-accent-glow:    rgba(201,162,39,0.3);
+  --t-accent-on:      #0b1d33;
+
+  /* ── Text ── */
+  --t-text:           #2c3e50;
+  --t-text-muted:     #8b95a5;
+  --t-text-on-dark:   #ffffff;
+  --t-text-on-dark-muted: #c8d0db;
+
+  /* ── Functional ── */
+  --t-error:          #e74c3c;
+  --t-success:        #27ae60;
+
+  /* ── Shape ── */
+  --t-radius:         8px;
+  --t-shadow:         0 4px 20px rgba(0,0,0,0.08);
+  --t-shadow-lg:      0 8px 40px rgba(0,0,0,0.12);
+  --t-transition:     0.25s ease;
+  --t-font:           'Inter', system-ui, sans-serif;
+
+  /* ── Hero overlay pattern ── */
+  --t-hero-pattern: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><circle cx="700" cy="100" r="400" fill="rgba(201,162,39,0.04)"/><circle cx="100" cy="500" r="300" fill="rgba(201,162,39,0.03)"/></svg>');
+  --t-stats-bg:       rgba(0,0,0,0.35);
+  --t-stats-border:   rgba(201,162,39,0.2);
+}
