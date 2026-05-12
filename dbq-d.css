@@ -597,6 +597,106 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ══════════════════════════
+   PAGE HERO (subpages)
+   ══════════════════════════ */
+.page-hero {
+  background: linear-gradient(135deg, var(--t-dark) 0%, var(--t-dark-mid) 100%);
+  color: var(--t-text-on-dark);
+  padding: 72px 0 56px;
+  text-align: center;
+}
+.page-hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+.page-hero p {
+  color: var(--t-text-on-dark-muted);
+  font-size: 1.05rem;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ══════════════════════════
+   ABOUT CONTENT
+   ══════════════════════════ */
+.about-content {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.about-content p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--t-text-muted);
+  margin-bottom: 16px;
+}
+
+/* ══════════════════════════
+   CONTACT GRID
+   ══════════════════════════ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  align-items: start;
+}
+.contact-info h2,
+.contact-form-wrap h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--t-dark);
+  margin-bottom: 16px;
+}
+.contact-info p {
+  color: var(--t-text-muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.contact-item {
+  margin-bottom: 16px;
+}
+.contact-item strong {
+  display: block;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--t-accent);
+  margin-bottom: 4px;
+}
+.contact-item a,
+.contact-item span {
+  color: var(--t-text);
+  font-size: 0.95rem;
+}
+.contact-item a:hover { color: var(--t-accent); }
+
+/* Contact form on light background */
+.contact-form-wrap .contact-form { gap: 14px; }
+.contact-form-wrap .form-group label {
+  color: var(--t-text-muted);
+}
+.contact-form-wrap .form-group input,
+.contact-form-wrap .form-group select,
+.contact-form-wrap .form-group textarea {
+  background: var(--t-bg-alt);
+  border: 1px solid var(--t-surface-border);
+  color: var(--t-text);
+}
+.contact-form-wrap .form-group input:focus,
+.contact-form-wrap .form-group select:focus,
+.contact-form-wrap .form-group textarea:focus {
+  border-color: var(--t-accent);
+  box-shadow: 0 0 0 3px var(--t-accent-bg);
+}
+.contact-form-wrap .form-group select option {
+  background: var(--t-bg);
+  color: var(--t-text);
+}
+.contact-form-wrap .form-group--checkbox label {
+  color: var(--t-text-muted);
+}
+
+/* ══════════════════════════
    RESPONSIVE
    ══════════════════════════ */
 @media (max-width: 1024px) {
@@ -644,6 +744,9 @@ a { color: inherit; text-decoration: none; }
   .cta-banner__checks { grid-template-columns: 1fr; justify-items: center; }
   .cta-banner__form { text-align: left; }
   .form-row { grid-template-columns: 1fr; }
+
+  .contact-grid { grid-template-columns: 1fr; }
+  .page-hero { padding: 48px 0 36px; }
 
   .site-footer__inner { grid-template-columns: 1fr; gap: 28px; }
 }
